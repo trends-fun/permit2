@@ -1,4 +1,4 @@
-pragma solidity 0.8.17;
+pragma solidity ^0.8.17;
 
 import {Vm} from "forge-std/Vm.sol";
 import {Permit2} from "../../src/Permit2.sol";
@@ -35,10 +35,7 @@ contract Permitter is PermitSignature {
         uint48 nonce = nonces[spender];
         permit = IAllowanceTransfer.PermitSingle({
             details: IAllowanceTransfer.PermitDetails({
-                token: address(token),
-                amount: amount,
-                expiration: uint48(block.timestamp + 1000),
-                nonce: nonce
+                token: address(token), amount: amount, expiration: uint48(block.timestamp + 1000), nonce: nonce
             }),
             spender: spender,
             sigDeadline: block.timestamp + 1000
